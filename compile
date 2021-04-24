@@ -1,0 +1,9 @@
+#!/bin/bash
+rm loader.com wellcome.com kernel.com myos.img;
+nasm -f bin kernel.asm -o kernel.com;
+nasm -f bin loader.asm -o loader.com;
+nasm -f bin wellcome.asm -o wellcome.com;
+./appender3 loader.com wellcome.com kernel.com;
+sudo chmod 777 *;
+ls -l;
+#cp loader.com wellcome.com kernel.com myos.img ../../soft/TD/

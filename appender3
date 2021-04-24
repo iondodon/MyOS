@@ -1,0 +1,94 @@
+#!/bin/bash
+
+if [ -z $1 ]; then
+	echo "Loader file name not defined!";
+	exit 0;
+fi
+
+if [ -z $2 ]; then
+	echo "Wellcome file name not defined!";
+	exit 0;
+fi
+
+if [ -z $3 ]; then
+	echo "Kernel file name not defined!";
+	exit 0;
+fi
+
+if [ ! -f $1 ]; then
+	echo "File $1 does not exist!";
+	exit 0;
+fi
+
+if [ ! -f $2 ]; then
+	echo "File $2 does not exist!";
+	exit 0;
+fi
+
+if [ ! -f $3 ]; then
+	echo "File $3 does not exist!"
+	exit 0;
+fi
+
+src_size=$(ls -l $1 | cut -d " " -f5);
+max_size=512;
+
+if [ "$src_size" -gt "$max_size" ]; then
+	echo "Bootloader is bigger than 512 bytes!";
+	exit 0;
+fi
+
+
+
+touch myos.img;
+
+#bootloader on the first sector
+cat $1 >> myos.img;
+
+#insert data in the second sector
+#truncate --size=512 myos.img
+#echo "MyOS v.0.1 created by Ion Dodon (FAF-172)"$'\r' >> myos.img;
+#date >> myos.img;
+
+#truncate --size=$(echo "ibase=$3; FF" | bc) myos.img;
+#truncate --size=1024 myos.img
+
+#wellcome draw on the third sector
+#cat $2 >> myos.img;
+
+#truncate --size=3072 myos.img;
+
+#Kernel on the 7'th sector
+#cat $3 >> myos.img;
+
+
+
+
+#fill 0 till 1791 sector
+truncate --size=916480 myos.img
+
+#bootloader on the first sector in my range
+cat $1 >> myos.img;
+
+#leave second sector in my range
+truncate --size=917504 myos.img
+
+#wellcome
+cat $2 >> myos.img;
+
+#wellcome should take 4 sectors in my range
+truncate --size=921600 myos.img
+
+#Kernel
+cat $3 >> myos.img;
+
+#about on the last sector in my range
+truncate --size=941568 myos.img
+echo "MyOS v.0.1 created by Ion Dodon (FAF-172)"$'\r' >> myos.img;
+date >> myos.img;
+
+
+truncate --size=1474560 myos.img;
+
+echo "Setting full permissions for myos.img";
+sudo chmod 777 myos.img;
