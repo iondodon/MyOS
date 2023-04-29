@@ -15,3 +15,18 @@ To build the source code it is requiredto have installed:
  - NASM version 2.14
  - bash shell
  - truncate
+
+
+Supported commands:
+
+- about
+- ascii
+- help
+- clear
+- reboot
+- beep
+- writeflp 
+- readflp 
+- chrono
+- fib 
+- draw
