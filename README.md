@@ -32,3 +32,21 @@ Parameters for `writeflp` and `readflp` commands:
 - `chrono` - Counts seconds
 - `fib n` - Calculates and displays the first `n` Fibonacci numbers
 - `draw` - Displays an animated UTM (press Enter to stop the animation)
+
+## Compilation
+
+Rage 1791-1840
+
+The `compile` script contains all the commands necessary to build:
+ - `loader.com` from `loader.asm`
+ - `wellcome.com` from `wellcome.asm`
+ - `kernel.com` from `kernel.asm`
+
+And it also contains the command that is necessary to create the bootable image from the `.com` files mentioned above, with the help of `appender3` script.
+
+The `compile` file is a shell script. To do it's work run `./compile` (or: `bash compile`).
+
+To build the source code it is requiredto have installed:
+ - NASM version 2.14
+ - bash shell
+ - truncate
