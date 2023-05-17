@@ -35,7 +35,7 @@ Parameters for `writeflp` and `readflp` commands:
 
 ## Compilation
 
-Rage 1791-1840
+Range 1791-1840
 
 The `compile` script contains all the commands necessary to build:
  - `loader.com` from `loader.asm`
