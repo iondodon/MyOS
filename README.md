@@ -37,7 +37,7 @@ Parameters for `writeflp` and `readflp` commands:
 
 Range 1791-1840
 
-The `compile` script contains all the commands necessary to build:
+The `compile` script contains all the commands necessary to compile and build:
  - `loader.com` from `loader.asm`
  - `wellcome.com` from `wellcome.asm`
  - `kernel.com` from `kernel.asm`
