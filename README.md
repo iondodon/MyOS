@@ -46,7 +46,7 @@ And it also contains the command that is necessary to create the bootable image 
 
 The `compile` file is a shell script. To do it's work run `./compile` (or: `bash compile`).
 
-To build the source code it is requiredto have installed:
+To build the source code it is required to have installed:
  - NASM version 2.14
  - bash shell
  - truncate
